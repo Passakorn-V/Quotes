@@ -1,125 +1,106 @@
 🧑‍💻 Data Engineer Test
 
-This project demonstrates a simple ETL pipeline and data analysis workflow using Python, Apache Airflow, and Apache Spark.
+A simple **ETL pipeline** and **data analysis workflow** using **Python**, **Apache Airflow**, and **Apache Spark**.
 
-⚙️ Manual Run
-1️⃣ Install dependencies
+---
+
+## ⚙️ Manual Run
+
+
+### 1️⃣ Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-2️⃣ Scrape raw data
+### 2️⃣ Scrape Raw Data
 
-Generate example JSON data files (example_quotes.json, example_authors.json) in the data/ folder.
+Generate example JSON files:
+example_quotes.json and example_authors.json → saved in the data/ folder.
+
+✅ Output:
+data/example_quotes.json - data/example_authors.json
+
+```bash
 
 # Linux / macOS
 python src/scrape_quotes.py
 
 # Windows (PowerShell / CMD)
 py src/scrape_quotes.py
+```
 
+### 3️⃣ Transform Data
+
+Merge and clean scraped data into both CSV and Parquet formats.
 
 ✅ Output:
+data/merged_data.csv - data/merged_data.parquet
 
-data/example_quotes.json
-
-data/example_authors.json
-
-3️⃣ Transform data
-
-Merge and clean data into both CSV and Parquet formats.
+```bash
 
 # Linux / macOS
 python src/transform_data.py
 
 # Windows (PowerShell / CMD)
 py src/transform_data.py
+```
 
+### 4️⃣ Test CSV vs Parquet
 
-✅ Output:
+Verify data consistency between the two formats.
 
-data/merged_data.csv
-
-data/merged_data.parquet
-
-4️⃣ Test CSV vs Parquet
-
-Verify data consistency between CSV and Parquet outputs.
+```bash
 
 # Linux / macOS
 python src/test.py
 
 # Windows (PowerShell / CMD)
 py src/test.py
+```
 
-5️⃣ Analyze with Spark
+### 5️⃣ Analyze with Spark
 
-Run Spark job to perform analysis and view results.
+Run the Spark job to analyze the merged dataset and view results.
+
+```bash
 
 # Linux / macOS
 python src/spark_analysis.py
 
 # Windows (PowerShell / CMD)
 py src/spark_analysis.py
+```
 
+### 🚀 Run with Airflow + Docker
 
-🚀 Run with Airflow + Docker
-Start Airflow locally
+Start Airflow locally using Docker Compose:
+
+```bash
+
 docker compose down -v
 docker compose up airflow-init
 docker compose up -d
+```
 
+### Then open your browser at:
 
-Once Airflow is running, open your browser and go to:
+```bash
+http://localhost:8080
+```
 
-👉 http://localhost:8080
+### Login credentials:
 
-Login credentials:
-
+```bash
 Username: admin
 Password: admin
+```
 
-📁 Project Structure
-project/
-│
-├── dags/
-│   └── quote_etl_dag.py
-│
-├── data/
-│   ├── example_quotes.json
-│   ├── example_authors.json
-│   ├── merged_data.csv
-│   └── merged_data.parquet
-│
-├── sql/
-│   ├── analysis_queries.sql
-│   └── run_queries.py
-│
-├── src/
-│   ├── scrape_quotes.py
-│   ├── transform_data.py
-│   ├── test.py
-│   └── spark_analysis.py
-│
-├── requirements.txt
-├── docker-compose.yml
-└── README.md
 
-🧠 Notes
 
-Ensure Docker Desktop is running before starting Airflow.
+<img width="298" height="612" alt="image" src="https://github.com/user-attachments/assets/6c21c3a3-78eb-4217-8bb4-fa6865eb6111" />
 
-You can modify DAGs and scripts to test your ETL logic.
 
-Compatible with Python 3.9+.
 
-💬 Example Workflow
 
-Scrape → scrape_quotes.py
 
-Transform → transform_data.py
-
-Test → test.py
-
-Analyze → spark_analysis.py
-
-Automate → Airflow DAG
 
