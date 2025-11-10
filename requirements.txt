@@ -1,0 +1,7 @@
+requests
+beautifulsoup4
+pandas
+apache-airflow
+pyspark
+fastparquet
+pyarrow
